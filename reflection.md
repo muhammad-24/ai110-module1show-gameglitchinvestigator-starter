@@ -4,21 +4,32 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+## 1. What was broken when you started?
 
-**Bug Reproduction Log**
+When I first ran the game it looked normal — a number guessing game with a text input, 
+submit button, and difficulty selector. But after playing a couple rounds, things felt off.
+The hints were misleading me and my score was changing in ways that didn't make sense.
 
-Document at least 3 bugs you found. Add rows as needed.
+### Bugs I found:
 
-| Input | Expected Behavior | Actual Behavior | Console Output / Error |
-|-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+1. **Wrong hints on even attempts** — The game told me "Go Lower" when the secret number 
+   was actually higher than my guess. This happened because the code converts the secret 
+   number to a string on every even attempt, breaking the comparison logic.
 
----
+2. **Hard mode is easier than Normal** — Selecting "Hard" gives a range of 1–50, which is 
+   actually easier than Normal's range of 1–100. The difficulty ranges are not ordered correctly.
+
+3. **Score increases on wrong guesses** — On every even-numbered attempt, a wrong "Too High" 
+   guess awards +5 points instead of subtracting points. Wrong guesses should never increase 
+   your score.
+
+### Bug Reproduction Logs
+
+| Input Used | Expected Behavior | Actual Behavior | Console Error / Output |
+|---|---|---|---|
+| Guess 40, secret 50, attempt 2 | Show "Go Higher" | Showed "Go Lower" | none |
+| Select "Hard" difficulty | Range 1–200 (harder) | Range is 1–50 (easier than Normal) | none |
+| Wrong guess on attempt 2 | Score decreases | Score increased by +5 | none |
 
 ## 2. How did you use AI as a teammate?
 
