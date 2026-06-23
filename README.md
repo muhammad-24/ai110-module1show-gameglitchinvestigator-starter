@@ -25,30 +25,34 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] **What the game does:** It's a number guessing game. You try to guess a secret number 
+  between 1 and 100, and the game tells you if you should go higher or lower. It also keeps a score.
+- [x] **Bugs I found:** The hints were backwards — it told me to go lower when I should've gone 
+  higher. Hard mode was actually easier than Normal (a smaller range). And on some guesses, 
+  getting it wrong somehow gave me points instead of taking them away.
+- [x] **What I fixed:** I moved all the game logic into logic_utils.py and cleaned it up. I made 
+  the hints point the right way, made wrong guesses always lose points, and made Hard mode 
+  actually harder. I also fixed the "New Game" button so it properly starts everything over.
 
 ## 📸 Demo Walkthrough
 
-Describe your fixed game in numbered steps so a reader can follow along without watching a video:
-
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
-
-**Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
+1. Pick a difficulty from the sidebar — Easy, Normal, or Hard.
+2. Type a number into the guess box and hit "Submit Guess."
+3. If you guessed too high, it tells you to go lower.
+4. If you guessed too low, it tells you to go higher.
+5. Your score drops a little on wrong guesses and only goes up when you win.
+6. Guess the right number and you get a win message with your final score.
+7. Hit "New Game" anytime to start fresh with a new secret number.
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
-```
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\musam\Downloads\pyyy\ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.14.0
+collected 6 items
 
-## 🚀 Stretch Features
+tests\test_game_logic.py ......                                          [100%]
 
-- [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
+============================== 6 passed in 0.08s ==============================
